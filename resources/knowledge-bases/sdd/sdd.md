@@ -113,19 +113,19 @@ Requirements use the **EARS (Easy Approach to Requirements Syntax)** pattern:
 
 ## N. Assumptions
 
-| # | Assumption | Impact if Wrong |
-|---|-----------|-----------------|
-| 1 | {Assumption statement} | {What changes if this doesn't hold} |
-| 2 | {Assumption statement} | {What changes if this doesn't hold} |
+| # | Assumption | Detail |
+|---|-----------|--------|
+| [**AS-1**]({topic}.md#as-1) | {Assumption title} | {Brief description} |
+| [**AS-2**]({topic}.md#as-2) | {Assumption title} | {Brief description} |
 
 ---
 
 ## N+1. Out of Scope
 
-| # | Item | Rationale |
-|---|------|-----------|
-| 1 | {Feature or capability explicitly excluded} | {Why it's out of scope} |
-| 2 | {Feature or capability explicitly excluded} | {Why it's out of scope} |
+| # | Item | Detail |
+|---|------|--------|
+| [**OOS-1**]({topic}.md#oos-1) | {Item title} | {Brief description} |
+| [**OOS-2**]({topic}.md#oos-2) | {Item title} | {Brief description} |
 
 ---
 
@@ -178,6 +178,26 @@ Requirements use the **EARS (Easy Approach to Requirements Syntax)** pattern:
 2. The system shall {behavior}.
 
 **Rationale:** So that {benefit}, the system must {constraint}.
+
+---
+
+## 4. Assumptions
+
+### AS-{N}: {Assumption Title} {: #as-{n} }
+
+**Statement:** {What is assumed to be true.}
+
+**Impact if Wrong:** {What changes if this assumption doesn't hold.}
+
+---
+
+## 5. Out of Scope
+
+### OOS-{N}: {Item Title} {: #oos-{n} }
+
+**Description:** {Feature or capability explicitly excluded.}
+
+**Rationale:** {Why it's out of scope.}
 ```
 
 ### design/design.md (Index)
@@ -214,7 +234,39 @@ graph TB
 
 ## Architectural Decision Records (ADRs)
 
-### ADR-1: {Decision Title}
+| ID | Decision | Status | Page |
+|----|----------|--------|------|
+| [**ADR-1**]({topic}.md#adr-1) | {Decision Title} | Accepted | [{topic}.md]({topic}.md) |
+| [**ADR-2**]({topic}.md#adr-2) | {Decision Title} | Proposed | [{topic}.md]({topic}.md) |
+```
+
+### design/{topic}.md (Detail Page)
+
+```markdown
+# {Topic}
+
+## Overview
+
+Brief description of this design area.
+
+## Components
+
+### Component Name
+
+**Purpose**: What this component does
+**Technology**: Tech stack used
+
+**Interfaces**:
+- API endpoints
+- Events published/consumed
+
+**Configuration**:
+- Environment variables
+- Configuration files
+
+## Architectural Decision Records
+
+### ADR-{N}: {Decision Title} {: #adr-{n} }
 
 **Status:** {Proposed | Accepted | Deprecated | Superseded}
 
@@ -233,6 +285,12 @@ graph TB
 **Rationale:** {Why the chosen solution was selected over alternatives. Include evidence: benchmarks, PoC results, load test data, compatibility findings, or references to technical evaluations performed during the decision process.}
 
 **Consequences:** {Technical trade-offs introduced. What becomes easier or harder? What new constraints does this impose on the system?}
+
+## Error Handling
+
+- **Input validation**: How invalid inputs are handled
+- **External service failures**: Retry logic, fallbacks
+- **Logging**: What gets logged and at what level
 ```
 
 ### design/test-scenarios.md (Persistent)
@@ -300,7 +358,7 @@ graph TB
 
 ### Story 1: {Title}
 - **Story ID**: {STORY-ID}
-- **Estimate**: {Days}
+- **Estimate**: {Hours}
 - **Description**: What the story delivers
 - **Dependencies**: {Story IDs or "None"}
 - **Acceptance Criteria**:
@@ -308,7 +366,7 @@ graph TB
   - [ ] Criterion 2
 
 ## Story Breakdown Guidelines
-- Each story should have a time estimate in days (1-5 days typical)
+- Each story should have a time estimate in hours (1-40 hours typical)
 - Stories should be independently reviewable
 - Each story must include implementation AND tests
 - First story must establish CI/CD foundation
@@ -323,10 +381,10 @@ The agent uses the appropriate issue tracker based on project configuration and 
 
 ## Effort Estimation
 
-- Estimates in days (1-5 days per story)
+- Estimates in hours (1-40 hours per story)
 - Include implementation, testing, and documentation time
 - Story points are NOT set by the agent — defined by team during refinement
-- Time format: `1d`, `2d`, `1d 4h` (1 day = 8 hours)
+- Time format: `1h`, `4h`, `16h`
 
 ## Best Practices
 
@@ -337,6 +395,7 @@ The agent uses the appropriate issue tracker based on project configuration and 
 - Keep index files up to date after every change
 - Split into topic pages when a file exceeds ~200 lines
 - Link between requirements and design sections
+- When an item is replaced, mark it as **Superseded by [XX-N]({link})** — never delete, preserve history
 
 ### Transactional Files (Tasks)
 
