@@ -13,6 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - SDD knowledge base (methodology, requirements, design best practices)
 - AI knowledge bases (skills development guidelines, agent steering)
 - Git knowledge bases (commit messages, branching, PRs, tagging, pre-commit hooks, best practices)
+- Helm knowledge base (chart conventions, NOTES.txt, probes, ConfigMaps/Secrets, environment injection)
+- Docker knowledge base (Dockerfile standards, image management conventions)
+- Gradle knowledge base (conventions, version management)
+- Database knowledge base (naming, migrations, schema change conventions)
+- Document review skill (interactive item-by-item review)
 - Release management knowledge base with versioning guidelines
 - Skills: commit, push, create-pr, create-branch, update-changelog
 - MkDocs Material documentation with Mermaid diagrams, dark/light toggle, tabs, grid cards

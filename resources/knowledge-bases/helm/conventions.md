@@ -28,8 +28,8 @@ appVersion: "1.0.15"
 
 **Rules:**
 
-- `version` and `appVersion` must always be aligned
-- Follow SemVer for both
+- `version` and `appVersion` are required
+- Both follow SemVer
 - Use `-SNAPSHOT` suffix for development versions
 
 ## values.yaml Standards
@@ -84,6 +84,14 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- define "my-app.selectorLabels" -}}
 app.kubernetes.io/name: {{ .Chart.Name }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
+
+{{- define "my-app.serviceAccountName" -}}
+{{- if .Values.serviceAccount.name }}
+{{- .Values.serviceAccount.name }}
+{{- else }}
+{{- include "my-app.fullname" . }}
+{{- end }}
 {{- end }}
 ```
 
@@ -165,6 +173,91 @@ The `templates/NOTES.txt` file is displayed after `helm install/upgrade`. It mus
 - Use `toYaml` with `nindent` for nested structures
 - Truncate names to 63 characters (Kubernetes limit)
 
+### Values Naming
+
+- Use camelCase for all value keys
+- Maximum 3 levels of nesting
+- Group by concern (image, service, ingress, resources, probes)
+
+```yaml
+# ✅ Good
+replicaCount: 2
+image:
+  repository: my-app
+  tag: "1.0.0"
+
+# ❌ Bad — too deep, inconsistent casing
+app_config:
+  server:
+    http:
+      connection:
+        timeout: 30
+```
+
+### Probes
+
+Every container must define liveness and readiness probes:
+
+```yaml
+livenessProbe:
+  httpGet:
+    path: /health/liveness
+    port: {{ .Values.service.port }}
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  failureThreshold: 3
+
+readinessProbe:
+  httpGet:
+    path: /health/readiness
+    port: {{ .Values.service.port }}
+  initialDelaySeconds: 10
+  periodSeconds: 5
+  failureThreshold: 3
+
+startupProbe:
+  httpGet:
+    path: /health/startup
+    port: {{ .Values.service.port }}
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  failureThreshold: 30
+```
+
+**Rules:**
+
+- Liveness: "is the process alive?" — restart if not
+- Readiness: "can it serve traffic?" — remove from load balancer if not
+- Startup: use for slow-starting apps — prevents liveness from killing during init
+
+### ConfigMaps vs Secrets
+
+| Use ConfigMap for | Use Secret for |
+|-------------------|---------------|
+| Application config (ports, feature flags) | Passwords, tokens, API keys |
+| Non-sensitive environment variables | TLS certificates |
+| Configuration files (nginx.conf, app.yaml) | Connection strings with credentials |
+
+**Rule:** If the value would be a problem in a git log or terminal output, it's a Secret.
+
+### Environment Injection
+
+Use `envFrom` to inject entire ConfigMaps/Secrets. Use individual `env` only for overrides or computed values:
+
+```yaml
+envFrom:
+  - configMapRef:
+      name: {{ include "my-app.fullname" . }}-config
+  - secretRef:
+      name: {{ include "my-app.fullname" . }}-secrets
+
+env:
+  - name: POD_NAME
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.name
+```
+
 ## Validation
 
 Before publishing any chart:
@@ -194,5 +287,6 @@ helm dependency update ./my-chart  # Download dependencies
 **Rules:**
 
 - Pin dependency versions exactly
+- Pin all Docker image tags in values.yaml — never use `latest` in production
 - Use `condition` to make dependencies optional
 - Run `helm dependency update` after any change to Chart.yaml dependencies
