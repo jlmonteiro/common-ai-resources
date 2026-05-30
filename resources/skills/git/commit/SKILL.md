@@ -86,6 +86,17 @@ Check for untracked files that might have been forgotten. List them and ask if a
 
 If the commit message includes a scope, verify the changed files are related to that scope. Warn if there's a mismatch.
 
+### 2.5 Documentation Impact
+
+Check if the changes affect anything documented in project docs (README, MkDocs, project-context.md). Examples:
+
+- New CLI command or task → update README or docs
+- New knowledge base or skill → update docs navigation and KB index
+- Changed project structure → update README and project-context.md
+- Changed configuration or environment variables → update relevant docs
+
+If documentation is outdated, suggest specific updates before committing.
+
 ## Step 3: Execute Commit
 
 Once all mandatory checks pass:
