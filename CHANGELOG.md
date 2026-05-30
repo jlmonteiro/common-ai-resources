@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.2.0] - 2026-05-30
+
+### Added
+- Multi-platform Docker builds (linux/amd64 + linux/arm64)
+- Java knowledge base (coding standards, Spring Boot conventions)
+- Java observability, resilience, and caching knowledge bases
+- MCP server: scope filtering for search (`list_scopes`, `scopes` parameter)
+- BDD test suite with pytest-bdd (22 scenarios covering chunking, search, scopes)
+- Test coverage and HTML reports (`inv test`)
+- Testing knowledge base (language-agnostic: TDD, BDD, test pyramid, mocking rules, Testcontainers)
+- REST API standards knowledge base (API First, URL design, status codes, resilience, RFC 7807, pagination, versioning, OAS)
+- Logging standards knowledge base (structured JSON, levels, tracing, audit, security, cloud-friendly)
+
 ## [0.1.1]  - 2026-05-30
 
 ### Fixed

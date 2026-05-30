@@ -43,6 +43,7 @@ nav:
       - Database: knowledge-bases/database.md
       - Gradle: knowledge-bases/gradle.md
       - Helm: knowledge-bases/helm.md
+      - Java: knowledge-bases/java.md
       - Git: knowledge-bases/git.md
   - MCP Server: mcp-server.md
 

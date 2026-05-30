@@ -23,13 +23,13 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install -e ".[dev]"
-      - run: pytest --junitxml=reports/test-results.xml
+      - run: pytest --junitxml=reports/test-results.xml --html=reports/test-report.html --self-contained-html --cov=common_ai --cov-report=html:reports/coverage
         continue-on-error: true
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: test-results
-          path: reports/test-results.xml
+          path: reports/
 
   build:
     runs-on: ubuntu-latest
