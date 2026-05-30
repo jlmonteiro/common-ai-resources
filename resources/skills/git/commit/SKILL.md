@@ -16,14 +16,23 @@ Before executing any step, search the **git/** knowledge bases for applicable gu
 
 ## Step 0: Detect Existing Hooks
 
-Check if the project has a `.pre-commit-config.yaml` file. If it exists, read it to identify which checks are already automated. Skip those checks in the steps below — don't duplicate what pre-commit already enforces.
+Check if the project has a `.pre-commit-config.yaml` file.
+
+**If it exists:** read it to identify which checks are already automated. Skip those checks in the steps below — don't duplicate what pre-commit already enforces.
 
 Common hooks that eliminate manual checks:
 
 - `detect-private-key` → skip secrets scan (Step 1.1)
 - `conventional-pre-commit` → skip message format validation (Step 1.2)
-- `no-commit-to-branch` → skip branch check (Step 1.5)
+- `no-commit-to-branch` → skip branch check (Step 1.4)
 - `ruff-check` → skip lint (Step 2.1)
+
+**If it does NOT exist:** suggest configuring pre-commit hooks. Refer to the **git/pre-commit-hooks** knowledge base for implementation examples. Ask the user:
+
+> "This project has no pre-commit hooks configured. Would you like me to set them up? This automates secrets detection, lint, commit message validation, and branch protection."
+
+- If **accepted**: create `.pre-commit-config.yaml` using the appropriate example from the KB, run `pre-commit install`, then re-run Step 0.
+- If **rejected**: proceed with manual AI-driven checks in the steps below.
 
 ## Step 1: Mandatory Checks
 
