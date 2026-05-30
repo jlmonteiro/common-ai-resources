@@ -67,7 +67,7 @@ inv run-dev
 # Lint code
 inv lint
 
-# Run tests
+# Run tests (generates coverage + HTML reports in reports/)
 inv test
 
 # Serve documentation

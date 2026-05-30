@@ -48,6 +48,39 @@ Never use `@AllArgsConstructor` or `@NoArgsConstructor` without justification.
 - Validate input with `@Valid` and Bean Validation annotations
 - Controllers handle HTTP concerns only — delegate to services
 
+## DTO Mapping
+
+Use MapStruct for entity-to-DTO conversions — never manual mapping in services:
+
+```java
+@Mapper(componentModel = "spring")
+public interface UserMapper {
+    UserResponse toResponse(User entity);
+    User toEntity(CreateUserRequest request);
+}
+```
+
+- Annotate mappers with `@Mapper(componentModel = "spring")` for DI
+- One mapper per domain aggregate
+- Keep mapping logic in the mapper — not in services or controllers
+
+## Validation
+
+Prefer annotation-based validation (Bean Validation / Jakarta Validation) over manual checks:
+
+```java
+public record CreateUserRequest(
+    @NotBlank @Size(min = 3, max = 50) String username,
+    @NotBlank @Email String email,
+    @NotNull @Min(18) Integer age
+) {}
+```
+
+- Use `@Valid` on controller parameters to trigger validation
+- Use standard annotations (`@NotBlank`, `@Email`, `@Size`, `@Min`, `@Max`, `@Pattern`)
+- Create custom constraint annotations for complex business rules
+- Never validate manually in services what can be expressed as annotations
+
 ## Exception Handling
 
 Use a global exception handler with `ProblemDetail` (RFC 7807) for all error responses:

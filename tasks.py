@@ -45,8 +45,8 @@ def lint(c):
 
 @task
 def test(c):
-    """Run tests."""
-    c.run("pytest")
+    """Run tests with coverage and HTML reports."""
+    c.run("pytest --junitxml=reports/test-results.xml --html=reports/test-report.html --self-contained-html --cov=common_ai --cov-report=html:reports/coverage --cov-report=term-missing")
 
 
 @task
@@ -74,7 +74,7 @@ def release(c, part="patch"):
     content = content.replace(f'version = "{current}"', f'version = "{new_version}"')
     pyproject.write_text(content)
 
-    c.run(f'git add pyproject.toml')
+    c.run('git add pyproject.toml')
     c.run(f'git commit -m "release: v{new_version}"')
     c.run(f'git tag v{new_version}')
     print(f"Released v{new_version}")

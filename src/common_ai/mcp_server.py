@@ -43,6 +43,7 @@ def _chunk_file(path: Path) -> list[dict]:
     """Split a markdown file into chunks using heading-aware + recursive splitting."""
     text = path.read_text(encoding="utf-8")
     source = str(path.relative_to(KB_PATH))
+    scope = path.relative_to(KB_PATH).parts[0] if len(path.relative_to(KB_PATH).parts) > 1 else "general"
 
     md_docs = _md_splitter.split_text(text)
     chunks = []
@@ -52,11 +53,11 @@ def _chunk_file(path: Path) -> list[dict]:
         content = f"{headers}\n\n{doc.page_content}" if headers else doc.page_content
 
         if len(content) <= CHUNK_SIZE:
-            chunks.append({"text": content, "source": source})
+            chunks.append({"text": content, "source": source, "scope": scope})
         else:
             sub_chunks = _text_splitter.split_text(content)
             for sub in sub_chunks:
-                chunks.append({"text": sub, "source": source})
+                chunks.append({"text": sub, "source": source, "scope": scope})
 
     return chunks
 
@@ -78,11 +79,12 @@ def _build_index():
 
 
 @mcp.tool()
-def search_knowledge(query: str, limit: int = 5) -> str:
+def search_knowledge(query: str, scopes: list[str] | None = None, limit: int = 5) -> str:
     """Search knowledge bases using semantic similarity.
 
     Args:
         query: The search query.
+        scopes: Optional list of scopes to filter results (e.g. ["java", "git"]). Use list_scopes to see available options.
         limit: Maximum number of results to return (default 5).
     """
     _build_index()
@@ -90,9 +92,22 @@ def search_knowledge(query: str, limit: int = 5) -> str:
     if not _chunks:
         return "No knowledge base documents found."
 
+    if scopes:
+        available = set(c["scope"] for c in _chunks)
+        invalid = set(scopes) - available
+        if invalid:
+            return f"Invalid scope(s): {', '.join(sorted(invalid))}. Available: {', '.join(sorted(available))}"
+
     model = _get_model()
     query_embedding = np.array(list(model.embed([query])))
     scores = np.dot(_embeddings, query_embedding.T).flatten()
+
+    if scopes:
+        scope_set = set(scopes)
+        for i, chunk in enumerate(_chunks):
+            if chunk["scope"] not in scope_set:
+                scores[i] = -1
+
     top_indices = np.argsort(scores)[::-1][:limit]
 
     results = []
@@ -102,6 +117,15 @@ def search_knowledge(query: str, limit: int = 5) -> str:
         results.append(f"**[{_chunks[i]['source']}]** (score: {scores[i]:.3f})\n\n{_chunks[i]['text']}")
 
     return "\n\n---\n\n".join(results) if results else "No relevant results found."
+
+
+@mcp.tool()
+def list_scopes() -> str:
+    """List all available knowledge base scopes. Use these values to filter search_knowledge results."""
+    _build_index()
+
+    scopes = sorted(set(c["scope"] for c in _chunks))
+    return "\n".join(f"- {s}" for s in scopes) if scopes else "No scopes found."
 
 
 @mcp.tool()

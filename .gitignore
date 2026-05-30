@@ -5,6 +5,7 @@ __pycache__/
 dist/
 .venv/
 venv/
+.coverage
 
 # MkDocs
 site/
@@ -33,3 +34,4 @@ logs/
 
 # Output
 output/
+reports/

@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Added
 - Multi-platform Docker builds (linux/amd64 + linux/arm64)
 - Java knowledge base (coding standards, Spring Boot conventions)
+- Java observability, resilience, and caching knowledge bases
+- MCP server: scope filtering for search (`list_scopes`, `scopes` parameter)
+- BDD test suite with pytest-bdd (22 scenarios covering chunking, search, scopes)
+- Test coverage and HTML reports (`inv test`)
 
 ## [0.1.1]  - 2026-05-30
 
