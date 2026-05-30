@@ -52,15 +52,16 @@ graph LR
 
 ## :material-wrench: Tools
 
-The server exposes two MCP tools:
+The server exposes three MCP tools:
 
 ### :material-magnify: search_knowledge
 
-Semantic search across all indexed knowledge bases.
+Semantic search across indexed knowledge bases with optional scope filtering.
 
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
 | `query` | string | :material-check: | — | The search query |
+| `scopes` | list[string] | :material-close: | all | Filter by scope (e.g., `["java", "docker"]`). Use `list_scopes` to see options. |
 | `limit` | integer | :material-close: | 5 | Maximum results to return |
 
 ??? example "Example response"
@@ -72,17 +73,82 @@ Semantic search across all indexed knowledge bases.
     Requirements use the EARS (Easy Approach to Requirements Syntax) pattern...
     ```
 
+### :material-filter-outline: list_scopes
+
+Lists all available scopes for filtering search results. Call this first to discover what's available.
+
+??? example "Example response"
+    ```
+    - ai
+    - databases
+    - docker
+    - git
+    - gradle
+    - helm
+    - java
+    - release
+    - sdd
+    ```
+
 ### :material-format-list-bulleted: list_knowledge_bases
 
 Lists all available knowledge base topics. No parameters required.
 
 ## :material-play-circle: Setup
 
-### Build
+### Using the Public Image
+
+The image is published to GitHub Container Registry. No build required:
+
+=== "Public Image (recommended)"
+
+    ```bash
+    docker pull ghcr.io/jlmonteiro/common-knowledge-base-mcp:latest
+    ```
+
+=== "Build Locally"
+
+    Only needed if you want to modify the knowledge bases or server code:
+
+    ```bash
+    inv build
+    ```
+
+### Quick Test
+
+Verify the container works by listing available scopes:
 
 ```bash
-inv build
+echo '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"test","version":"1.0"}}}
+{"jsonrpc":"2.0","method":"notifications/initialized"}
+{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"list_scopes","arguments":{}}}' | docker run -i ghcr.io/jlmonteiro/common-knowledge-base-mcp:latest
 ```
+
+??? example "Expected response"
+    ```json
+    {"jsonrpc":"2.0","id":2,"result":{"content":[{"type":"text","text":"- ai\n- databases\n- docker\n- git\n- gradle\n- helm\n- java\n- release\n- sdd"}],"isError":false}}
+    ```
+
+Run a scoped search:
+
+```bash
+echo '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"test","version":"1.0"}}}
+{"jsonrpc":"2.0","method":"notifications/initialized"}
+{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"search_knowledge","arguments":{"query":"circuit breaker","scopes":["java"],"limit":2}}}' | docker run -i ghcr.io/jlmonteiro/common-knowledge-base-mcp:latest
+```
+
+??? example "Expected response"
+    ```
+    **[java/resilience.md]** (score: 0.782)
+
+    Resilience Standards > Circuit Breakers > Default Configuration
+    ...
+
+    **[java/resilience.md]** (score: 0.695)
+
+    Resilience Standards > Circuit Breakers > Usage
+    ...
+    ```
 
 ### Client Configuration
 

@@ -80,11 +80,15 @@ def _build_index():
 
 @mcp.tool()
 def search_knowledge(query: str, scopes: list[str] | None = None, limit: int = 5) -> str:
-    """Search knowledge bases using semantic similarity.
+    """Search software engineering knowledge bases covering coding standards,
+    architecture patterns, DevOps conventions, and best practices.
+
+    Use list_scopes first to discover available topics (e.g., java, docker, git, helm, sdd).
+    Filter with scopes to get relevant results for the current project's tech stack.
 
     Args:
         query: The search query.
-        scopes: Optional list of scopes to filter results (e.g. ["java", "git"]). Use list_scopes to see available options.
+        scopes: Optional list of scopes to filter results. Use list_scopes to see available options.
         limit: Maximum number of results to return (default 5).
     """
     _build_index()
@@ -121,7 +125,11 @@ def search_knowledge(query: str, scopes: list[str] | None = None, limit: int = 5
 
 @mcp.tool()
 def list_scopes() -> str:
-    """List all available knowledge base scopes. Use these values to filter search_knowledge results."""
+    """List available knowledge base scopes (e.g., java, docker, git, helm, sdd).
+
+    Call this first to discover what topics are available, then pass relevant
+    scopes to search_knowledge to filter results for your project's tech stack.
+    """
     _build_index()
 
     scopes = sorted(set(c["scope"] for c in _chunks))
@@ -130,7 +138,11 @@ def list_scopes() -> str:
 
 @mcp.tool()
 def list_knowledge_bases() -> str:
-    """List all available knowledge base topics."""
+    """List all knowledge base topics with their directory names.
+
+    Each topic contains markdown documents covering conventions, standards,
+    and best practices for that area of software engineering.
+    """
     topics = set()
     for md_file in KB_PATH.rglob("*.md"):
         rel = md_file.relative_to(KB_PATH)
