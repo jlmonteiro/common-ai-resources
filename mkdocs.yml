@@ -1,0 +1,7 @@
+site_name: Common AI Resources
+site_description: Shared AI resources with multi-tool adapters for Kiro, Claude Code, and Gemini CLI.
+
+theme:
+  name: material
+
+docs_dir: docs
