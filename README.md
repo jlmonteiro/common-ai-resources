@@ -1,6 +1,13 @@
 # Common AI Resources
 
+[![CI](https://github.com/jlmonteiro/common-ai-resources/actions/workflows/ci.yml/badge.svg)](https://github.com/jlmonteiro/common-ai-resources/actions/workflows/ci.yml)
+[![Docs](https://github.com/jlmonteiro/common-ai-resources/actions/workflows/post-merge.yml/badge.svg)](https://jlmonteiro.github.io/common-ai-resources/)
+[![Release](https://img.shields.io/github/v/release/jlmonteiro/common-ai-resources)](https://github.com/jlmonteiro/common-ai-resources/releases/latest)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+
 Shared AI resources with multi-tool adapters for Kiro CLI, Claude Code, and Gemini CLI.
+
+📖 **Full documentation:** https://jlmonteiro.github.io/common-ai-resources/
 
 ## Architecture
 

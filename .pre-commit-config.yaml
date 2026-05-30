@@ -7,6 +7,7 @@ repos:
       - id: trailing-whitespace
       - id: end-of-file-fixer
       - id: check-yaml
+        exclude: mkdocs.yml
       - id: check-json
       - id: check-merge-conflict
       - id: no-commit-to-branch
@@ -22,4 +23,4 @@ repos:
     hooks:
       - id: conventional-pre-commit
         stages: [commit-msg]
-        args: [feat, fix, docs, refactor, test, chore, perf, style, ci, build, revert]
+        args: [feat, fix, docs, refactor, test, chore, perf, style, ci, build, revert, release]
