@@ -1,29 +1,45 @@
-# Image Management Conventions
+# Image Management Standards
 
-## Naming
+## Naming Convention
 
 ```
-ghcr.io/jlmonteiro/<image-name>:<tag>
+<registry>/<namespace>/<image-name>:<tag>
 ```
 
 ## Tag Strategy
 
-| Tag | When | Mutable? |
-|-----|------|----------|
-| `X.Y.Z` | On release | No (immutable) |
-| `latest` | Every build from main | Yes |
+### Production
 
-Both tags are applied on release:
+| Tag | Purpose | Mutable? |
+|-----|---------|----------|
+| `X.Y.Z` | Specific release version | No (immutable) |
+| `latest` | Most recent stable release | Yes |
+
+Always apply both on release:
 
 ```bash
-docker build -t ghcr.io/jlmonteiro/myapp:1.2.3 -t ghcr.io/jlmonteiro/myapp:latest .
+docker build -t <image>:1.2.3 -t <image>:latest .
 ```
 
-## Docker Compose Conventions
+### Development
+
+| Tag | Purpose |
+|-----|---------|
+| `latest` | Latest build from main |
+| `<branch-name>` | Feature branch build |
+| `<sha>` | Specific commit (CI traceability) |
+
+### Rules
+
+- Production tags are immutable — never overwrite a versioned tag
+- Use SemVer for release tags (must match git tags)
+- `latest` is always mutable
+
+## Docker Compose Standards
 
 ### Service Dependencies
 
-Use `condition: service_healthy` for databases and infrastructure services:
+Always use `condition: service_healthy` for infrastructure services. Every infrastructure service must define a `healthcheck`:
 
 ```yaml
 services:
@@ -31,11 +47,7 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-```
 
-Every infrastructure service must define a `healthcheck`:
-
-```yaml
   postgres:
     image: postgres:15-alpine
     healthcheck:
@@ -45,15 +57,31 @@ Every infrastructure service must define a `healthcheck`:
       retries: 5
 ```
 
+| Condition | Use when |
+|-----------|----------|
+| `service_started` | Service just needs to be running |
+| `service_healthy` | Service must be ready to accept connections |
+| `service_completed_successfully` | Init/setup containers that run once |
+
 ### Networks
 
 Use custom networks to isolate service groups when the Compose file has 3+ services:
 
 ```yaml
+services:
+  app:
+    networks: [frontend, backend]
+  postgres:
+    networks: [backend]
+  nginx:
+    networks: [frontend]
+
 networks:
   frontend:
   backend:
 ```
+
+Services can only communicate if they share a network.
 
 ### Volumes
 
