@@ -6,4 +6,4 @@ Conventions for database schema design, naming, and migrations.
 
 | File | Description |
 |------|-------------|
-| `conventions.md` | Naming rules, migration workflow, schema change process |
+| [`conventions.md`](https://github.com/jlmonteiro/common-ai-resources/blob/main/resources/knowledge-bases/databases/conventions.md) | Naming rules, migration workflow, schema change process |

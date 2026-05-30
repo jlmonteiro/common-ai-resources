@@ -6,9 +6,9 @@ A methodology where specifications are created before implementation. Requiremen
 
 | File | Description |
 |------|-------------|
-| `sdd.md` | Methodology overview, specification structure, and file templates |
-| `requirements-best-practices.md` | Dos, don'ts, and quality checklist for writing requirements |
-| `design-best-practices.md` | Design guidelines, ADR standards, and quality checklist |
+| [`sdd.md`](https://github.com/jlmonteiro/common-ai-resources/blob/main/resources/knowledge-bases/sdd/sdd.md) | Methodology overview, specification structure, and file templates |
+| [`requirements-best-practices.md`](https://github.com/jlmonteiro/common-ai-resources/blob/main/resources/knowledge-bases/sdd/requirements-best-practices.md) | Dos, don'ts, and quality checklist for writing requirements |
+| [`design-best-practices.md`](https://github.com/jlmonteiro/common-ai-resources/blob/main/resources/knowledge-bases/sdd/design-best-practices.md) | Design guidelines, ADR standards, and quality checklist |
 
 ## :material-key: Key Concepts
 

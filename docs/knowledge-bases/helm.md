@@ -6,4 +6,4 @@ Conventions for Helm chart development, templating, and deployment.
 
 | File | Description |
 |------|-------------|
-| `conventions.md` | Chart structure, values, helpers, NOTES.txt, probes, environment injection |
+| [`conventions.md`](https://github.com/jlmonteiro/common-ai-resources/blob/main/resources/knowledge-bases/helm/conventions.md) | Chart structure, values, helpers, NOTES.txt, probes, environment injection |

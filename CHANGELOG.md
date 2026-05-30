@@ -36,3 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Estimates changed from days to hours in SDD templates
 - Chunk strategy: heading-aware splitting (500 chars, 100 overlap) via langchain-text-splitters
 - Image name standardized to ghcr.io/jlmonteiro/common-knowledge-base-mcp
+- KB docs link to source files on GitHub (open in new tab)
+- Gradle icon updated to Simple Icons `:simple-gradle:`
+- README: add badges (CI, Docs, Release, License) and documentation link
+- Apache 2.0 license added
