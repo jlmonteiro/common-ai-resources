@@ -41,3 +41,45 @@ common-ai install --target kiro
 # Serve documentation
 mkdocs serve
 ```
+
+## Build
+
+```bash
+# Install dev dependencies
+pip install -e ".[dev,docs]"
+
+# Build MCP knowledge base Docker image
+inv build
+
+# Run MCP server
+inv run
+
+# Run MCP server with live-mounted knowledge bases (development)
+inv run-dev
+
+# Lint code
+inv lint
+
+# Run tests
+inv test
+
+# Serve documentation
+inv docs
+```
+
+## MCP Server
+
+The knowledge base MCP server provides semantic search over all resources via STDIO.
+
+Add to your AI tool's MCP config:
+
+```json
+{
+  "mcpServers": {
+    "common-ai-knowledge": {
+      "command": "docker",
+      "args": ["run", "-i", "ghcr.io/jlmonteiro/common-knowledge-base-mcp"]
+    }
+  }
+}
+```
