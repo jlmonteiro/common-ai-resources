@@ -1,0 +1,29 @@
+# https://help.github.com/articles/dealing-with-line-endings/
+
+# Auto-detect text files
+* text=auto
+
+# Source files
+*.py text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+
+# Scripts
+*.sh text eol=lf
+
+# Windows scripts
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.gif binary
+*.ico binary
+*.gz binary
+*.zip binary
+*.tar binary
+*.pdf binary
