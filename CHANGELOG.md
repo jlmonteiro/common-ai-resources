@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - BDD test suite with pytest-bdd (22 scenarios covering chunking, search, scopes)
 - Test coverage and HTML reports (`inv test`)
 - Testing knowledge base (language-agnostic: TDD, BDD, test pyramid, mocking rules, Testcontainers)
+- REST API standards knowledge base (API First, URL design, status codes, resilience, RFC 7807, pagination, versioning, OAS)
 
 ## [0.1.1]  - 2026-05-30
 

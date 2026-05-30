@@ -148,3 +148,14 @@ Use parameterized/data-driven tests for:
 - Multiple scenarios with same structure but different data
 
 Avoid duplicating test logic — extract to parameterized tests with a data table.
+
+## Contract Tests
+
+Verify that the API implementation matches the OpenAPI Specification:
+
+- Validate response schemas against OAS definitions
+- Verify all documented status codes are returned correctly
+- Ensure undocumented fields don't leak into responses
+- Run on every PR to catch spec drift early
+
+Contract tests are not functional tests — they verify the *shape* of the API, not the business logic.
