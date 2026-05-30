@@ -2,6 +2,23 @@
 
 A Docker-based [Model Context Protocol](https://modelcontextprotocol.io/) server that provides semantic search over all knowledge bases. Any MCP-compatible AI tool can connect and query your documentation.
 
+## Why MCP Instead of Context Files?
+
+AI tools like Claude Code (`CLAUDE.md`) and Gemini (`GEMINI.md`) support loading context from files directly. So why add an MCP server?
+
+| Aspect | Context Files | MCP Server |
+|--------|--------------|------------|
+| **Context usage** | Loads entire file into context window | Returns only relevant chunks |
+| **Scalability** | Degrades as docs grow (token limits) | Handles hundreds of files efficiently |
+| **Precision** | AI must scan full document | Semantic search finds exact sections |
+| **Tool support** | Tool-specific format per file | Universal protocol, one server for all tools |
+| **Maintenance** | Duplicate content per tool | Single source of truth |
+| **Dynamic queries** | Static — loaded once at start | On-demand — query what you need, when you need it |
+
+!!! tip "When to use each"
+    Use **context files** for small, always-relevant instructions (project rules, coding style).
+    Use the **MCP server** for large reference documentation that's queried selectively (knowledge bases, API docs, best practices).
+
 ## Architecture
 
 ```mermaid
