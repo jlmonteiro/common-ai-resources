@@ -5,7 +5,7 @@
 
 A centralized repository of AI assistant resources — agents, prompts, skills, and knowledge bases — designed to work across multiple AI tools.
 
-## Why This Project?
+## :material-help-circle: Why This Project?
 
 AI assistants like Kiro CLI, Claude Code, and Gemini CLI each have their own configuration formats for the same underlying concepts: system prompts, workflows, and context documents. This leads to duplication and drift when you use multiple tools.
 
@@ -15,7 +15,37 @@ AI assistants like Kiro CLI, Claude Code, and Gemini CLI each have their own con
 2. Using **adapters** to generate tool-specific configurations
 3. Exposing knowledge bases via a **universal MCP server** that any compatible tool can query
 
-## Architecture
+## :material-view-grid: What's Inside
+
+<div class="grid cards" markdown>
+
+- :material-robot:{ .lg .middle } **Agents**
+
+    ---
+
+    AI persona definitions in YAML. Adapters convert to tool-specific formats.
+
+- :material-lightning-bolt:{ .lg .middle } **Skills**
+
+    ---
+
+    Multi-step workflows as Markdown. Reusable across tools and projects.
+
+- :material-book-open-page-variant:{ .lg .middle } **Knowledge Bases**
+
+    ---
+
+    Reference documentation indexed for semantic search via MCP.
+
+- :material-console:{ .lg .middle } **MCP Server**
+
+    ---
+
+    Docker-based semantic search. Any MCP-compatible tool can query.
+
+</div>
+
+## :material-sitemap: Architecture
 
 ```mermaid
 graph TB
@@ -46,43 +76,29 @@ graph TB
     style MCP fill:#fff3e0,stroke:#ff9800
 ```
 
-## Key Concepts
+## :material-rocket-launch: Getting Started
 
-### Resources
+=== "Development Setup"
 
-| Resource | Purpose | Format |
-|----------|---------|--------|
-| **Agents** | AI assistant persona definitions | YAML |
-| **Prompts** | Reusable system prompts and templates | Markdown |
-| **Skills** | Multi-step workflows and procedures | Markdown |
-| **Knowledge Bases** | Reference documentation for RAG | Markdown |
+    ```bash
+    git clone https://github.com/jlmonteiro/common-ai-resources.git
+    cd common-ai-resources
+    pip install -e ".[dev,docs]"
+    ```
 
-### Adapters
+=== "Build MCP Server"
 
-Adapters transform canonical definitions into tool-specific configurations. Each adapter understands the target tool's format and generates the correct output files.
+    ```bash
+    inv build
+    ```
 
-### MCP Server
+=== "Serve Documentation"
 
-A Docker-based MCP server that indexes all knowledge bases and exposes them via semantic search. This provides a universal way for any AI tool to access your documentation without loading entire files into context.
+    ```bash
+    inv docs
+    ```
 
-## Getting Started
-
-```bash
-# Clone the repository
-git clone https://github.com/jlmonteiro/common-ai-resources.git
-cd common-ai-resources
-
-# Install in development mode
-pip install -e ".[dev,docs]"
-
-# Build the MCP knowledge base server
-inv build
-
-# Serve this documentation locally
-inv docs
-```
-
-## Project Structure
+## :material-folder-outline: Project Structure
 
 ```
 common-ai-resources/
@@ -102,3 +118,8 @@ common-ai-resources/
 ├── tasks.py                 # Build tasks (invoke)
 └── pyproject.toml
 ```
+
+## :material-arrow-right-circle: Next Steps
+
+- Explore the [Knowledge Bases](knowledge-bases/index.md) available for semantic search
+- Learn how the [MCP Server](mcp-server.md) works and how to connect your AI tool

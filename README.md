@@ -76,7 +76,7 @@ Add to your AI tool's MCP config:
 ```json
 {
   "mcpServers": {
-    "common-ai-knowledge": {
+    "common-knowledge-base-mcp": {
       "command": "docker",
       "args": ["run", "-i", "ghcr.io/jlmonteiro/common-knowledge-base-mcp"]
     }

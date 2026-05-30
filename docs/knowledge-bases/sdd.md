@@ -1,8 +1,8 @@
-# Spec-Driven Development (SDD)
+# :material-file-document-outline: Spec-Driven Development (SDD)
 
 A methodology where specifications are created before implementation. Requirements and design are persistent artifacts that evolve across epics, while tasks are transactional artifacts scoped to a specific epic/story.
 
-## Contents
+## :material-file-tree: Contents
 
 | File | Description |
 |------|-------------|
@@ -10,14 +10,37 @@ A methodology where specifications are created before implementation. Requiremen
 | `requirements-best-practices.md` | Dos, don'ts, and quality checklist for writing requirements |
 | `design-best-practices.md` | Design guidelines, ADR standards, and quality checklist |
 
-## Key Concepts
+## :material-key: Key Concepts
 
-- **EARS Pattern** — structured syntax for writing testable requirements
-- **Persistent vs Transactional** — requirements/design grow over time; tasks are per-epic
-- **ADRs** — evidence-based architectural decisions with alternatives and rationale
-- **Traceability** — every requirement links to a test scenario and design decision
+<div class="grid cards" markdown>
 
-## Specification Structure
+- :material-format-list-checks:{ .lg .middle } **EARS Pattern**
+
+    ---
+
+    Structured syntax for writing testable, unambiguous requirements.
+
+- :material-swap-horizontal:{ .lg .middle } **Persistent vs Transactional**
+
+    ---
+
+    Requirements/design grow over time; tasks are created per-epic.
+
+- :material-scale-balance:{ .lg .middle } **ADRs**
+
+    ---
+
+    Evidence-based architectural decisions with alternatives and rationale.
+
+- :material-link-variant:{ .lg .middle } **Traceability**
+
+    ---
+
+    Every requirement links to a test scenario and design decision.
+
+</div>
+
+## :material-folder-outline: Specification Structure
 
 ```mermaid
 graph TB
@@ -36,11 +59,12 @@ graph TB
     style T fill:#fff3e0,stroke:#ff9800
 ```
 
-## Usage
+## :material-robot: Usage
 
-This knowledge base is used by AI assistants to:
+!!! info
+    This knowledge base is used by AI assistants to generate specifications following industry best practices.
 
-- Generate requirements following EARS syntax and best practices
+- Generate requirements following EARS syntax
 - Create design documents with proper ADR structure
-- Break down work into well-scoped user stories with estimates
+- Break down work into well-scoped user stories with hour estimates
 - Maintain traceability across the specification lifecycle
