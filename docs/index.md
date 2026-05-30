@@ -1,5 +1,8 @@
 # Common AI Resources
 
+!!! warning "Work in Progress"
+    This project is under active development and not yet complete. APIs, configurations, and documentation may change without notice.
+
 A centralized repository of AI assistant resources — agents, prompts, skills, and knowledge bases — designed to work across multiple AI tools.
 
 ## Why This Project?
@@ -20,7 +23,7 @@ graph TB
         direction LR
         A["🤖 Agents<br/><small>YAML</small>"]
         P["💬 Prompts<br/><small>Markdown</small>"]
-        S["⚡ Skills<br/><small>YAML</small>"]
+        S["⚡ Skills<br/><small>Markdown</small>"]
         K["📚 Knowledge Bases<br/><small>Markdown</small>"]
     end
 
@@ -51,7 +54,7 @@ graph TB
 |----------|---------|--------|
 | **Agents** | AI assistant persona definitions | YAML |
 | **Prompts** | Reusable system prompts and templates | Markdown |
-| **Skills** | Multi-step workflows and procedures | YAML |
+| **Skills** | Multi-step workflows and procedures | Markdown |
 | **Knowledge Bases** | Reference documentation for RAG | Markdown |
 
 ### Adapters

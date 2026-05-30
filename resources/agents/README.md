@@ -1,7 +1,7 @@
 # Agents
 
-Canonical agent definitions in YAML format. Each agent has a tool-agnostic definition
-that adapters transform into tool-specific configurations.
+Canonical agent definitions in YAML format. These are tool-agnostic — the CLI
+adapters transform them into tool-specific configurations (Kiro JSON, CLAUDE.md, GEMINI.md).
 
 ## Structure
 

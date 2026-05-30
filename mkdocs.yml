@@ -20,6 +20,7 @@ nav:
   - MCP Server: mcp-server.md
 
 markdown_extensions:
+  - admonition
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
