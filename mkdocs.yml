@@ -3,5 +3,32 @@ site_description: Shared AI resources with multi-tool adapters for Kiro, Claude 
 
 theme:
   name: material
+  features:
+    - content.code.copy
+  icon:
+    repo: fontawesome/brands/github
+
+repo_url: https://github.com/jlmonteiro/common-ai-resources
 
 docs_dir: docs
+
+nav:
+  - Home: index.md
+  - Knowledge Bases:
+      - Overview: knowledge-bases/index.md
+      - SDD: knowledge-bases/sdd.md
+  - MCP Server: mcp-server.md
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra_javascript:
+  - https://unpkg.com/mermaid@11/dist/mermaid.min.js
+  - js/mermaid-init.js
