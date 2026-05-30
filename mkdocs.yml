@@ -5,6 +5,8 @@ theme:
   name: material
   features:
     - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
   icon:
     repo: fontawesome/brands/github
 
@@ -21,14 +23,19 @@ nav:
 
 markdown_extensions:
   - admonition
+  - pymdownx.details
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
 
 extra_javascript:
   - https://unpkg.com/mermaid@11/dist/mermaid.min.js
