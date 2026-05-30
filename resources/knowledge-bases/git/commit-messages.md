@@ -27,6 +27,7 @@ Scope is optional — use when it adds clarity (e.g., `mcp`, `sdd`, `cli`, `docs
 | `ci` | CI/CD configuration changes | No |
 | `build` | Build system or dependencies | No |
 | `revert` | Reverts a previous commit | No |
+| `release` | Version bump and changelog finalization | No |
 
 ## Version Impact
 

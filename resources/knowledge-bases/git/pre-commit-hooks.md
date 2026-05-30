@@ -27,7 +27,7 @@ repos:
     hooks:
       - id: conventional-pre-commit
         stages: [commit-msg]
-        args: [feat, fix, docs, refactor, test, chore, perf, style, ci, build, revert]
+        args: [feat, fix, docs, refactor, test, chore, perf, style, ci, build, revert, release]
 ```
 
 ## Automated vs AI-Assisted Checks
