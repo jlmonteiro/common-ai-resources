@@ -39,6 +39,11 @@ nav:
   - Knowledge Bases:
       - Overview: knowledge-bases/index.md
       - SDD: knowledge-bases/sdd.md
+      - Docker: knowledge-bases/docker.md
+      - Database: knowledge-bases/database.md
+      - Gradle: knowledge-bases/gradle.md
+      - Helm: knowledge-bases/helm.md
+      - Git: knowledge-bases/git.md
   - MCP Server: mcp-server.md
 
 markdown_extensions:

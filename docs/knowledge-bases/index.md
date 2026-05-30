@@ -7,6 +7,11 @@ Knowledge bases are markdown documents that provide context to AI assistants via
 | Topic | Description |
 |-------|-------------|
 | :material-file-document-outline: [SDD](sdd.md) | Spec-Driven Development methodology, templates, and best practices |
+| :material-docker: [Docker](docker.md) | Dockerfile standards and image management conventions |
+| :material-database-outline: [Database](database.md) | Naming, migrations, and schema change conventions |
+| :material-elephant: [Gradle](gradle.md) | Kotlin DSL conventions and version management |
+| :material-ship-wheel: [Helm](helm.md) | Chart conventions, NOTES.txt, probes, and environment injection |
+| :material-git: [Git](git.md) | Commit messages, branching, PRs, tagging, and pre-commit hooks |
 
 ## :material-cog: How It Works
 
