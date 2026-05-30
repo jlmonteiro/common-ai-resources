@@ -1,14 +1,14 @@
-# Knowledge Bases
+# :material-book-open-page-variant: Knowledge Bases
 
 Knowledge bases are markdown documents that provide context to AI assistants via semantic search. They are the foundation of the RAG (Retrieval-Augmented Generation) strategy used by the MCP server.
 
-## Available Knowledge Bases
+## :material-format-list-bulleted: Available Topics
 
 | Topic | Description |
 |-------|-------------|
-| [SDD](sdd.md) | Spec-Driven Development methodology, templates, and best practices |
+| :material-file-document-outline: [SDD](sdd.md) | Spec-Driven Development methodology, templates, and best practices |
 
-## How It Works
+## :material-cog: How It Works
 
 ```mermaid
 graph LR
@@ -33,18 +33,22 @@ graph LR
     style Output fill:#fff3e0,stroke:#ff9800
 ```
 
-## Adding a Knowledge Base
+## :material-plus-circle: Adding a Knowledge Base
 
 1. Create a new folder under `resources/knowledge-bases/`
 2. Add markdown files with your documentation
 3. Rebuild the MCP Docker image: `inv build`
 
-The MCP server automatically indexes all `*.md` files recursively.
+!!! info
+    The MCP server automatically indexes all `*.md` files recursively. No configuration needed.
 
-## Best Practices
+## :material-check-all: Best Practices
+
+!!! tip "Writing for RAG"
+    Each chunk should make sense **in isolation** — the AI tool sees only the chunk, not the full file.
 
 - Split large topics into multiple files (~200 lines max per file)
 - Use `#`, `##`, `###` headings to create natural chunk boundaries
-- Write self-contained sections — each chunk should make sense in isolation
-- Use descriptive headings — they become part of the chunk context (e.g., `Design > Security > Zero Trust`)
+- Write self-contained sections with descriptive headings
+- Headings become part of the search context (e.g., `Design > Security > Zero Trust`)
 - Keep sections under 500 characters when possible for optimal search precision
