@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.3.0] - 2026-05-31
+
+### Added
+- Security standards knowledge base (auth, authorization, secrets, input validation, data protection, headers)
+- Observability standards knowledge base (RED/USE methods, tracing, health checks, alerting, dashboards)
+- Resilience standards knowledge base (circuit breaker, retry, timeout, bulkhead, fallback, ordering)
+- Kubernetes standards knowledge base (resource dimensioning, scaling, security, namespaces, resilience)
+- Grid layouts with icons on all KB documentation pages
+
+### Changed
+- MCP tool descriptions improved for agent discoverability (server purpose, usage guidance)
+
 ## [0.2.0] - 2026-05-30
 
 ### Added
@@ -17,6 +29,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Testing knowledge base (language-agnostic: TDD, BDD, test pyramid, mocking rules, Testcontainers)
 - REST API standards knowledge base (API First, URL design, status codes, resilience, RFC 7807, pagination, versioning, OAS)
 - Logging standards knowledge base (structured JSON, levels, tracing, audit, security, cloud-friendly)
+- Security standards knowledge base (auth, authorization, secrets, input validation, data protection, headers)
+- Observability standards knowledge base (RED/USE methods, tracing, health checks, alerting, dashboards)
+- Resilience standards knowledge base (circuit breaker, retry, timeout, bulkhead, fallback, ordering)
 
 ## [0.1.1]  - 2026-05-30
 

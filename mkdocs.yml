@@ -43,8 +43,15 @@ nav:
       - Database: knowledge-bases/database.md
       - Gradle: knowledge-bases/gradle.md
       - Helm: knowledge-bases/helm.md
+      - Kubernetes: knowledge-bases/k8s.md
       - Java: knowledge-bases/java.md
       - Git: knowledge-bases/git.md
+      - Security: knowledge-bases/security.md
+      - Observability: knowledge-bases/observability.md
+      - Resilience: knowledge-bases/resilience.md
+      - Logging: knowledge-bases/logging.md
+      - Testing: knowledge-bases/testing.md
+      - API: knowledge-bases/api.md
   - MCP Server: mcp-server.md
 
 markdown_extensions:

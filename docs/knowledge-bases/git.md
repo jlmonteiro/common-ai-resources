@@ -2,7 +2,41 @@
 
 Standards for git workflow, commit messages, branching, and automation.
 
-## Contents
+<div class="grid cards" markdown>
+
+- :material-message-text:{ .lg .middle } **Commit Messages**
+
+    ---
+
+    Conventional commits, types, version impact.
+
+- :material-source-branch:{ .lg .middle } **Branching**
+
+    ---
+
+    GitHub Flow, naming conventions, short-lived branches.
+
+- :material-source-pull:{ .lg .middle } **Pull Requests**
+
+    ---
+
+    Title format, description template, squash merge.
+
+- :material-tag:{ .lg .middle } **Tagging**
+
+    ---
+
+    SemVer with `v` prefix, version bumping rules.
+
+- :material-hook:{ .lg .middle } **Pre-Commit Hooks**
+
+    ---
+
+    Automated checks, hook config, AI vs automated split.
+
+</div>
+
+## Source
 
 | File | Description |
 |------|-------------|
