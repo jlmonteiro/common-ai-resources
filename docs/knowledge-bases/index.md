@@ -13,6 +13,12 @@ Knowledge bases are markdown documents that provide context to AI assistants via
 | :material-ship-wheel: [Helm](helm.md) | Chart conventions, NOTES.txt, probes, and environment injection |
 | :simple-spring: [Java](java.md) | Coding standards, Spring Boot conventions, Lombok |
 | :material-git: [Git](git.md) | Commit messages, branching, PRs, tagging, and pre-commit hooks |
+| :material-shield-lock: [Security](security.md) | Auth patterns, secrets management, input validation, data protection |
+| :material-chart-line: [Observability](observability.md) | Metrics (RED/USE), tracing, health checks, alerting, dashboards |
+| :material-shield-refresh: [Resilience](resilience.md) | Circuit breaker, retry, timeout, bulkhead, fallback |
+| :material-text-box-outline: [Logging](logging.md) | Structured JSON, levels, tracing context, audit, cloud-friendly |
+| :material-test-tube: [Testing](testing.md) | TDD, BDD, test pyramid, mocking rules, Testcontainers |
+| :material-api: [API](api.md) | REST standards, API First, status codes, pagination, versioning |
 
 ## :material-cog: How It Works
 
