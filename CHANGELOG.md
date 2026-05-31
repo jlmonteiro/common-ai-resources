@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.4.0] - 2026-05-31
+
+### Added
+- Diagnose skill (disciplined bug troubleshooting: reproduce → hypothesise → instrument → fix)
+- SDD skills: create-requirements, create-design, create-tasks, review-specification, list-specifications
+- Code review skill (11 review areas, sub-agent/sequential modes, stack-adaptive scopes)
+- Review skill (validate and simulate skills step by step)
+- Create project skill (interactive scaffolding with Gradle, Docker, Helm, CI/CD)
+- Create API endpoint skill (API First, OAS before code, TDD)
+- Create test skill (auto-detects test type, proposes scenarios, BDD structure)
+- Security audit skill (7 audit areas, severity classification, TDD remediation)
+- Create migration skill (expand-contract pattern, rollback, Testcontainers verification)
+- Create Helm chart skill (full chart scaffold with security, probes, network policies)
+- Create Dockerfile skill (multi-stage, non-root, health check, OCI labels)
+- Performance review skill (N+1 detection, caching gaps, I/O optimization)
+
+### Changed
+- SDD templates: removed MkDocs-specific `{: #id }` anchors (use standard heading links)
+- Skills documentation: 22 pages with rich examples, mermaid flows, admonitions, grid layouts
+
 ## [0.3.0] - 2026-05-31
 
 ### Added

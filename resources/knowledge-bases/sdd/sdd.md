@@ -144,7 +144,7 @@ Requirements use the **EARS (Easy Approach to Requirements Syntax)** pattern:
 
 ## 1. User Journeys
 
-### UJ-{N}: {Journey Title} {: #uj-{n} }
+### UJ-{N}: {Journey Title}
 
 1. User navigates to the application and is presented with {initial state}.
 2. User performs {action}.
@@ -156,7 +156,7 @@ Requirements use the **EARS (Easy Approach to Requirements Syntax)** pattern:
 
 ## 2. Functional Requirements
 
-### FR-{N}: {Requirement Title} {: #fr-{n} }
+### FR-{N}: {Requirement Title}
 
 **Acceptance Criteria:**
 
@@ -170,7 +170,7 @@ Requirements use the **EARS (Easy Approach to Requirements Syntax)** pattern:
 
 ## 3. Non-Functional Requirements
 
-### NFR-{N}: {Requirement Title} {: #nfr-{n} }
+### NFR-{N}: {Requirement Title}
 
 **Acceptance Criteria:**
 
@@ -183,7 +183,7 @@ Requirements use the **EARS (Easy Approach to Requirements Syntax)** pattern:
 
 ## 4. Assumptions
 
-### AS-{N}: {Assumption Title} {: #as-{n} }
+### AS-{N}: {Assumption Title}
 
 **Statement:** {What is assumed to be true.}
 
@@ -193,7 +193,7 @@ Requirements use the **EARS (Easy Approach to Requirements Syntax)** pattern:
 
 ## 5. Out of Scope
 
-### OOS-{N}: {Item Title} {: #oos-{n} }
+### OOS-{N}: {Item Title}
 
 **Description:** {Feature or capability explicitly excluded.}
 
@@ -266,7 +266,7 @@ Brief description of this design area.
 
 ## Architectural Decision Records
 
-### ADR-{N}: {Decision Title} {: #adr-{n} }
+### ADR-{N}: {Decision Title}
 
 **Status:** {Proposed | Accepted | Deprecated | Superseded}
 
@@ -300,7 +300,7 @@ Brief description of this design area.
 
 ## {Module/Feature Name}
 
-### TS-{N}: {Scenario Title} {: #ts-{n} }
+### TS-{N}: {Scenario Title}
 - **Given**: {Initial state or context}.
 - **When**: {Action or event}.
 - **Then**: {Expected outcome}.
