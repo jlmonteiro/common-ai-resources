@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Create project skill (interactive scaffolding with Gradle, Docker, Helm, CI/CD)
 - Create API endpoint skill (API First, OAS before code, TDD)
 - Create test skill (auto-detects test type, proposes scenarios, BDD structure)
+- Security audit skill (7 audit areas, severity classification, TDD remediation)
+- Create migration skill (expand-contract pattern, rollback, Testcontainers verification)
+- Create Helm chart skill (full chart scaffold with security, probes, network policies)
+- Create Dockerfile skill (multi-stage, non-root, health check, OCI labels)
+- Performance review skill (N+1 detection, caching gaps, I/O optimization)
 
 ### Changed
 - SDD templates: removed MkDocs-specific `{: #id }` anchors (use standard heading links)
