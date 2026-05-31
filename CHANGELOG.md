@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.4.0] - 2026-05-31
+
+### Added
+- Diagnose skill (disciplined bug troubleshooting: reproduce → hypothesise → instrument → fix)
+- SDD skills: create-requirements, create-design, create-tasks, review-specification, list-specifications
+- Code review skill (11 review areas, sub-agent/sequential modes, stack-adaptive scopes)
+- Review skill (validate and simulate skills step by step)
+
+### Changed
+- SDD templates: removed MkDocs-specific `{: #id }` anchors (use standard heading links)
+
 ## [0.3.0] - 2026-05-31
 
 ### Added
