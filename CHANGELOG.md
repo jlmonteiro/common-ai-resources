@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - SDD skills: create-requirements, create-design, create-tasks, review-specification, list-specifications
 - Code review skill (11 review areas, sub-agent/sequential modes, stack-adaptive scopes)
 - Review skill (validate and simulate skills step by step)
+- Create project skill (interactive scaffolding with Gradle, Docker, Helm, CI/CD)
+- Create API endpoint skill (API First, OAS before code, TDD)
+- Create test skill (auto-detects test type, proposes scenarios, BDD structure)
 
 ### Changed
 - SDD templates: removed MkDocs-specific `{: #id }` anchors (use standard heading links)
