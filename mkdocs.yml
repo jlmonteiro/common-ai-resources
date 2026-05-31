@@ -43,6 +43,7 @@ nav:
       - Database: knowledge-bases/database.md
       - Gradle: knowledge-bases/gradle.md
       - Helm: knowledge-bases/helm.md
+      - Kubernetes: knowledge-bases/k8s.md
       - Java: knowledge-bases/java.md
       - Git: knowledge-bases/git.md
       - Security: knowledge-bases/security.md

@@ -11,6 +11,7 @@ Knowledge bases are markdown documents that provide context to AI assistants via
 | :material-database-outline: [Database](database.md) | Naming, migrations, and schema change conventions |
 | :simple-gradle: [Gradle](gradle.md) | Kotlin DSL conventions and version management |
 | :material-ship-wheel: [Helm](helm.md) | Chart conventions, NOTES.txt, probes, and environment injection |
+| :material-kubernetes: [Kubernetes](k8s.md) | Resource dimensioning, scaling, security, namespaces, resilience |
 | :simple-spring: [Java](java.md) | Coding standards, Spring Boot conventions, Lombok |
 | :material-git: [Git](git.md) | Commit messages, branching, PRs, tagging, and pre-commit hooks |
 | :material-shield-lock: [Security](security.md) | Auth patterns, secrets management, input validation, data protection |

@@ -58,8 +58,28 @@ git pull origin main
 git checkout -b <branch-name>
 ```
 
-## Step 5: Confirm
+## Step 5: Version Bump
+
+Based on the branch type, determine if a version bump is needed. Refer to the **git/tagging** knowledge base for version rules.
+
+| Branch type | Version bump | Example |
+|-------------|-------------|---------|
+| `feature/` | MINOR (new functionality) | `0.2.0` → `0.3.0` |
+| `fix/` | PATCH (bug fix) | `0.2.0` → `0.2.1` |
+| `docs/` | No bump | — |
+| `chore/` | No bump (unless it affects the user) | — |
+
+If a bump is needed:
+
+1. Read current version from `pyproject.toml`
+2. Propose the new version based on the table above
+3. Ask the user to confirm
+4. If accepted: bump `pyproject.toml` and add a new `## [X.Y.Z] - YYYY-MM-DD` section to `CHANGELOG.md`
+5. If rejected: skip (user will handle manually)
+
+## Step 6: Confirm
 
 Report:
 - Branch created and checked out
+- Version bumped (if applicable)
 - Remind the user to commit often and push when ready

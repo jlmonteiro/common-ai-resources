@@ -2,7 +2,35 @@
 
 A methodology where specifications are created before implementation. Requirements and design are persistent artifacts that evolve across epics, while tasks are transactional artifacts scoped to a specific epic/story.
 
-## :material-file-tree: Contents
+<div class="grid cards" markdown>
+
+- :material-format-list-checks:{ .lg .middle } **EARS Pattern**
+
+    ---
+
+    Structured syntax for writing testable, unambiguous requirements.
+
+- :material-swap-horizontal:{ .lg .middle } **Persistent vs Transactional**
+
+    ---
+
+    Requirements/design grow over time; tasks are created per-epic.
+
+- :material-scale-balance:{ .lg .middle } **ADRs**
+
+    ---
+
+    Evidence-based architectural decisions with alternatives and rationale.
+
+- :material-link-variant:{ .lg .middle } **Traceability**
+
+    ---
+
+    Every requirement links to a test scenario and design decision.
+
+</div>
+
+## Source
 
 | File | Description |
 |------|-------------|

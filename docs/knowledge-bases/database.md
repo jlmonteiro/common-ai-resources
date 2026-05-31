@@ -2,7 +2,29 @@
 
 Conventions for database schema design, naming, and migrations.
 
-## Contents
+<div class="grid cards" markdown>
+
+- :material-format-letter-case:{ .lg .middle } **Naming**
+
+    ---
+
+    Plural tables, snake_case, FK/index/constraint conventions.
+
+- :material-file-replace:{ .lg .middle } **Migrations**
+
+    ---
+
+    Versioned tool, file naming, rollback strategy.
+
+- :material-swap-horizontal:{ .lg .middle } **Schema Changes**
+
+    ---
+
+    Expand-contract pattern, backward compatibility.
+
+</div>
+
+## Source
 
 | File | Description |
 |------|-------------|
