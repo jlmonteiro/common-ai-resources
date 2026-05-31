@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Testing knowledge base (language-agnostic: TDD, BDD, test pyramid, mocking rules, Testcontainers)
 - REST API standards knowledge base (API First, URL design, status codes, resilience, RFC 7807, pagination, versioning, OAS)
 - Logging standards knowledge base (structured JSON, levels, tracing, audit, security, cloud-friendly)
+- Security standards knowledge base (auth, authorization, secrets, input validation, data protection, headers)
+- Observability standards knowledge base (RED/USE methods, tracing, health checks, alerting, dashboards)
+- Resilience standards knowledge base (circuit breaker, retry, timeout, bulkhead, fallback, ordering)
 
 ## [0.1.1]  - 2026-05-30
 
