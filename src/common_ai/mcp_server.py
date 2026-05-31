@@ -63,6 +63,10 @@ def _chunk_file(path: Path) -> list[dict]:
 
 
 def _build_index():
+    """Build the embedding index from all KB markdown files.
+
+    Note: relies on global mutable state — safe for stdio MCP (single-threaded).
+    """
     global _chunks, _embeddings
     if _chunks:
         return

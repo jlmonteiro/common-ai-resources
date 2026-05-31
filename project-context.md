@@ -166,5 +166,4 @@ Use these features to improve readability:
 - `inv lint` — Run ruff linter
 - `inv test` — Run pytest
 - `inv docs` — Serve MkDocs locally
-- `common-ai generate --target <tool>` — Generate tool-specific configs
-- `common-ai install --target <tool>` — Install configs to target tool
+- `common-ai install --tool <kiro|claude|gemini> --name <agent> --target <dir>` — Install resources to target tool

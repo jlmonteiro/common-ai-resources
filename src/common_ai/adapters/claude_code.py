@@ -4,8 +4,10 @@ import json
 import shutil
 from pathlib import Path
 
+import click
+
 from common_ai.adapters.base import BaseAdapter
-from common_ai.output import print_header, print_tree, print_file_content, print_summary, print_next_steps
+from common_ai.output import print_header, print_tree, print_file_content, print_summary, print_next_steps, build_prompt
 
 MCP_IMAGE = "ghcr.io/jlmonteiro/common-knowledge-base-mcp:latest"
 
@@ -27,36 +29,12 @@ class ClaudeAdapter(BaseAdapter):
         }
 
     def _build_claude_md(self, name: str, kbs: list[Path]) -> str:
-        kb_list = "\n".join(f"- **{kb.name}** — {kb.name} conventions and standards" for kb in kbs)
-        return f"""# {name}
-
-## Role
-
-You are a senior developer specializing in [YOUR DOMAIN HERE].
-You help the team write clean, tested, production-ready code following established conventions.
-
-## Expertise
-
-- [List your agent's areas of expertise]
-- [e.g., Java/Spring Boot development]
-- [e.g., REST API design]
-
-## Knowledge Bases
-
-Use the MCP server to search these knowledge bases before answering.
-Only use the following scopes (pass them in the `scopes` parameter):
-
-{kb_list}
-
-**Important:** Do NOT search scopes outside this list.
-
-## Principles
-
-1. **Convention over configuration** — follow the knowledge bases, don't reinvent
-2. **Test-driven** — write tests before or alongside implementation
-3. **Security by default** — validate inputs, use parameterized queries, handle errors
-4. **Minimal and correct** — solve what was asked, don't over-engineer
-"""
+        return build_prompt(
+            name, kbs,
+            "Use the MCP server to search these knowledge bases before answering.\n"
+            "Only use the following scopes (pass them in the `scopes` parameter):\n\n"
+            "**Important:** Do NOT search scopes outside this list.",
+        )
 
     def preview(self, name: str, target: Path, skills: list[Path], kbs: list[Path]) -> None:
         print_header("🔍 Dry Run — Claude Code")
@@ -86,18 +64,23 @@ Only use the following scopes (pass them in the `scopes` parameter):
         print_tree(target, tree)
         print_summary(len(skills), len(kbs), dry_run=True)
 
-    def install(self, name: str, target: Path, skills: list[Path], kbs: list[Path]) -> None:
+    def install(self, name: str, target: Path, skills: list[Path], kbs: list[Path], force: bool = False) -> None:
+        if target.exists() and any((target / f).exists() for f in [".mcp.json", "CLAUDE.md"]) and not force:
+            click.echo(f"  ❌ Target already has Claude config: {target}\n     Use --force to overwrite.", err=True)
+            raise SystemExit(1)
         target.mkdir(parents=True, exist_ok=True)
 
         # .mcp.json at project root
-        mcp_file = target / ".mcp.json"
-        mcp_file.write_text(json.dumps(self._mcp_json(), indent=2) + "\n")
+        mcp_file = None
+        if kbs:
+            mcp_file = target / ".mcp.json"
+            mcp_file.write_text(json.dumps(self._mcp_json(), indent=2) + "\n")
 
-        # .claude/settings.json
-        claude_dir = target / ".claude"
-        claude_dir.mkdir(parents=True, exist_ok=True)
-        settings_file = claude_dir / "settings.json"
-        settings_file.write_text(json.dumps(self._settings_json(), indent=2) + "\n")
+            # .claude/settings.json
+            claude_dir = target / ".claude"
+            claude_dir.mkdir(parents=True, exist_ok=True)
+            settings_file = claude_dir / "settings.json"
+            settings_file.write_text(json.dumps(self._settings_json(), indent=2) + "\n")
 
         # Skills to .claude-skills/<name>/
         for skill_dir in skills:
@@ -114,9 +97,10 @@ Only use the following scopes (pass them in the `scopes` parameter):
             claude_md = target / "CLAUDE.md"
             claude_md.write_text(self._build_claude_md(name, kbs) + "\n")
 
+        steps = [f"Customize your agent prompt: {target / 'CLAUDE.md'}"]
+        if mcp_file:
+            steps.append(f"MCP config: {mcp_file}")
+        if skills:
+            steps.append(f"Skills: {target / '.claude-skills'}/")
         print_summary(len(skills), len(kbs), dry_run=False)
-        print_next_steps(name, [
-            f"Customize your agent prompt: {target / 'CLAUDE.md'}",
-            f"MCP config: {mcp_file}",
-            f"Skills: {target / '.claude-skills'}/",
-        ])
+        print_next_steps(steps)

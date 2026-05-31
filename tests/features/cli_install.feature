@@ -113,3 +113,23 @@ Feature: CLI Install Command
     When I run install with tool "kiro" name "my-agent" skills "git/commit" kbs "git" and capture output
     Then the output contains "What's Next"
     And the output contains "prompt.md"
+
+  Scenario: Install fails when target exists without force
+    Given a target directory that already exists
+    When I run install with tool "kiro" name "test" skills "git/commit" kbs "git" without force
+    Then the install fails with "already exists"
+
+  Scenario: Install succeeds with force when target exists
+    Given a target directory that already exists
+    When I run install with tool "kiro" name "test" skills "git/commit" kbs "git" with force
+    Then the file "skills/git/commit/SKILL.md" exists in target
+
+  Scenario: Warning shown for invalid skill name
+    Given a target directory
+    When I run install with tool "kiro" name "test" skills "nonexistent/thing" kbs "git" and capture stderr
+    Then stderr contains "Skill not found: nonexistent/thing"
+
+  Scenario: Warning shown for invalid KB name
+    Given a target directory
+    When I run install with tool "kiro" name "test" skills "git/commit" kbs "fakescope" and capture stderr
+    Then stderr contains "Knowledge base not found: fakescope"

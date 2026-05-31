@@ -8,5 +8,5 @@ class BaseAdapter(ABC):
         """Print dry-run preview of what would be installed."""
 
     @abstractmethod
-    def install(self, name: str, target: Path, skills: list[Path], kbs: list[Path]) -> None:
+    def install(self, name: str, target: Path, skills: list[Path], kbs: list[Path], force: bool = False) -> None:
         """Install resources to target directory."""

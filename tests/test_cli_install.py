@@ -144,6 +144,46 @@ def file_not_contains(path, text, context):
     assert text not in content
 
 
+@given("a target directory that already exists")
+def given_existing_target(target_dir, context):
+    target_dir.mkdir(parents=True, exist_ok=True)
+    (target_dir / "prompt.md").write_text("existing")
+    context["target"] = target_dir
+
+
+@when(parsers.parse('I run install with tool "{tool}" name "{name}" skills "{skills}" kbs "{kbs}" without force'))
+def run_install_no_force(tool, name, skills, kbs, context):
+    try:
+        installer = Installer(tool=tool, name=name, target=str(context["target"]), skills=[skills], kbs=[kbs])
+        installer.execute()
+        context["exit_code"] = 0
+    except SystemExit as e:
+        context["exit_code"] = e.code
+
+
+@when(parsers.parse('I run install with tool "{tool}" name "{name}" skills "{skills}" kbs "{kbs}" with force'))
+def run_install_with_force(tool, name, skills, kbs, context):
+    installer = Installer(tool=tool, name=name, target=str(context["target"]), skills=[skills], kbs=[kbs], force=True)
+    installer.execute()
+
+
+@when(parsers.parse('I run install with tool "{tool}" name "{name}" skills "{skills}" kbs "{kbs}" and capture stderr'))
+def run_install_capture_stderr(tool, name, skills, kbs, context, capsys):
+    installer = Installer(tool=tool, name=name, target=str(context["target"]), skills=[skills], kbs=[kbs])
+    installer.dry_run()
+    context["stderr"] = capsys.readouterr().err
+
+
+@then(parsers.parse('the install fails with "{text}"'))
+def install_fails(text, context, capsys):
+    assert context["exit_code"] == 1
+
+
+@then(parsers.parse('stderr contains "{text}"'))
+def stderr_contains(text, context):
+    assert text in context["stderr"]
+
+
 @then(parsers.parse("exactly {count:d} skill is found"))
 def skill_found_count(count, context):
     assert len(context["results"]) == count

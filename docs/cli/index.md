@@ -126,6 +126,7 @@ common-ai install \
   --target <directory> \
   [--skills <category/name>]... \
   [--knowledge-bases <scope>]... \
+  [--force] \
   [--dry-run]
 ```
 
@@ -136,6 +137,7 @@ common-ai install \
 | `--target` | :material-check: | Installation directory |
 | `--skills` | | Skills to install (repeatable). Defaults to **all** |
 | `--knowledge-bases` | | KB scopes to install (repeatable). Defaults to **all** |
+| `--force` | | Overwrite existing files without prompting |
 | `--dry-run` | | Preview without writing files |
 
 ## :material-select-multiple: Selecting Resources

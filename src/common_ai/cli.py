@@ -15,9 +15,10 @@ def main():
 @click.option("--skills", multiple=True, help="Skills to install (category/name or 'all').")
 @click.option("--knowledge-bases", "kbs", multiple=True, help="Knowledge bases to install (scope or 'all').")
 @click.option("--dry-run", is_flag=True, help="Preview what would be installed without writing files.")
-def install(tool, name, target, skills, kbs, dry_run):
+@click.option("--force", is_flag=True, help="Overwrite existing files without prompting.")
+def install(tool, name, target, skills, kbs, dry_run, force):
     """Install skills and knowledge bases to target tool's location."""
-    installer = Installer(tool=tool, name=name, target=target, skills=list(skills), kbs=list(kbs))
+    installer = Installer(tool=tool, name=name, target=target, skills=list(skills), kbs=list(kbs), force=force)
     if dry_run:
         installer.dry_run()
     else:
