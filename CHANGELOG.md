@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.0.0]
+
+### Added
+- CLI `install` command with adapters for Kiro, Claude Code, and Gemini CLI
+- Kiro adapter: generates agent.json, prompt.md, copies skills and knowledge bases
+- Claude adapter: generates .mcp.json, .claude/settings.json, .claude-skills/, CLAUDE.md
+- Gemini adapter: generates .gemini/settings.json, .gemini/skills/, GEMINI.md
+- Resource registry with `importlib.resources` for package distribution
+- Rich terminal output with ANSI colors, emoji icons, and directory tree
+- `--dry-run` flag to preview generated files without writing
+- Scope restriction in Claude/Gemini prompts (MCP serves all, prompt limits)
+- CLI documentation with architecture diagrams, per-tool pages, and install instructions
+- 12 new BDD test scenarios for CLI (45 total tests, 97% coverage)
+
+### Changed
+- Resources bundled as package data for `pipx install` support
+
 ## [0.4.0] - 2026-05-31
 
 ### Added

@@ -53,6 +53,11 @@ nav:
       - Testing: knowledge-bases/testing.md
       - API: knowledge-bases/api.md
   - MCP Server: mcp-server.md
+  - CLI:
+      - Overview: cli/index.md
+      - Kiro CLI: cli/kiro.md
+      - Claude Code: cli/claude.md
+      - Gemini CLI: cli/gemini.md
   - Skills:
       - Overview: skills/index.md
       - Git Workflow:
