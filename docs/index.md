@@ -1,8 +1,5 @@
 # Common AI Resources
 
-!!! warning "Work in Progress"
-    This project is under active development and not yet complete. APIs, configurations, and documentation may change without notice.
-
 A centralized repository of AI assistant resources — agents, prompts, skills, and knowledge bases — designed to work across multiple AI tools.
 
 ## :material-help-circle: Why This Project?
