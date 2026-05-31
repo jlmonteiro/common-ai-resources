@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 - SDD templates: removed MkDocs-specific `{: #id }` anchors (use standard heading links)
+- Skills documentation: 22 pages with rich examples, mermaid flows, admonitions, grid layouts
 
 ## [0.3.0] - 2026-05-31
 

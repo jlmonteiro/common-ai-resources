@@ -53,6 +53,40 @@ nav:
       - Testing: knowledge-bases/testing.md
       - API: knowledge-bases/api.md
   - MCP Server: mcp-server.md
+  - Skills:
+      - Overview: skills/index.md
+      - Git Workflow:
+          - Create Branch: skills/git/create-branch.md
+          - Commit: skills/git/commit.md
+          - Push: skills/git/push.md
+          - Create PR: skills/git/create-pr.md
+      - SDD:
+          - Create Requirements: skills/sdd/create-requirements.md
+          - Create Design: skills/sdd/create-design.md
+          - Create Tasks: skills/sdd/create-tasks.md
+          - Review Specification: skills/sdd/review-specification.md
+          - List Specifications: skills/sdd/list-specifications.md
+      - Development:
+          - Code Review: skills/development/code-review.md
+          - Create API Endpoint: skills/development/create-api-endpoint.md
+          - Create Test: skills/development/create-test.md
+          - Performance Review: skills/development/performance-review.md
+          - Review Skill: skills/development/review-skill.md
+      - Infrastructure:
+          - Create Dockerfile: skills/infrastructure/create-dockerfile.md
+          - Create Helm Chart: skills/infrastructure/create-helm-chart.md
+      - Security:
+          - Security Audit: skills/security/audit.md
+      - Database:
+          - Create Migration: skills/database/create-migration.md
+      - Debugging:
+          - Diagnose: skills/debugging/diagnose.md
+      - Release:
+          - Update Changelog: skills/release/update-changelog.md
+      - Documentation:
+          - Review Document: skills/document/review.md
+      - Project:
+          - Create Project: skills/project/create-project.md
 
 markdown_extensions:
   - admonition
