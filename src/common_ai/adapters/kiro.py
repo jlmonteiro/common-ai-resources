@@ -27,7 +27,33 @@ class KiroAdapter(BaseAdapter):
                 "indexType": "best",
                 "include": ["**/*.md"],
             })
-        return {"name": name, "resources": resources}
+        return {
+            "name": name,
+            "resources": resources,
+            "tools": ["read", "write", "knowledge", "shell", "use_subagent"],
+            "allowedTools": ["read", "knowledge"],
+            "toolsSettings": {
+                "shell": {
+                    "autoAllowReadonly": True,
+                    "allowedCommands": [
+                        "git *",
+                        "find *",
+                        "ls *",
+                        "grep *",
+                        "cat *",
+                        "gh *",
+                        "./gradlew *",
+                        "npm *",
+                        "npx *",
+                        "docker *",
+                        "docker-compose *",
+                    ],
+                },
+                "write": {"allowedPaths": ["."]},
+                "knowledge": {"autoAllow": True},
+                "use_subagent": {"trustedAgents": [name]},
+            },
+        }
 
     def _prompt_md(self, name: str, kbs: list[Path]) -> str:
         return build_prompt(
@@ -101,4 +127,6 @@ class KiroAdapter(BaseAdapter):
         print_next_steps([
             f"Customize your agent prompt: {target / 'prompt.md'}",
             f"Agent config: {agent_file}",
+            "Review 'tools', 'allowedTools', and 'toolsSettings' in the agent JSON and adjust to your needs",
+            "Add a 'description' field to the agent JSON to describe your agent's purpose",
         ])

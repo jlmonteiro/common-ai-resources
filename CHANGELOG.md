@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.0.1] - 2026-06-01
+
+### Fixed
+- Kiro adapter generates incomplete agent JSON missing tools, allowedTools, and toolsSettings
+- Install next steps now remind users to review permissions and add agent description
+
 ## [1.0.0]
 
 ### Added
