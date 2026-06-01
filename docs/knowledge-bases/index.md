@@ -20,6 +20,7 @@ Knowledge bases are markdown documents that provide context to AI assistants via
 | :material-text-box-outline: [Logging](logging.md) | Structured JSON, levels, tracing context, audit, cloud-friendly |
 | :material-test-tube: [Testing](testing.md) | TDD, BDD, test pyramid, mocking rules, Testcontainers |
 | :material-api: [API](api.md) | REST standards, API First, status codes, pagination, versioning |
+| :material-palette-outline: [UI](ui.md) | Markdown-UI DSL for low-fidelity wireframes and spec-code sync |
 
 ## :material-cog: How It Works
 
