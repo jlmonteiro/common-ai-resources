@@ -1,6 +1,6 @@
 [project]
 name = "common-ai-resources"
-version = "1.0.0"
+version = "1.0.1"
 description = "Shared AI resources with multi-tool adapters for Kiro, Claude Code, and Gemini CLI"
 requires-python = ">=3.11"
 dependencies = [
