@@ -130,3 +130,64 @@ class KiroAdapter(BaseAdapter):
             "Review 'tools', 'allowedTools', and 'toolsSettings' in the agent JSON and adjust to your needs",
             "Add a 'description' field to the agent JSON to describe your agent's purpose",
         ])
+
+    def update(self, name: str, target: Path, skills: list[Path], kbs: list[Path]) -> None:
+        if not target.exists():
+            click.echo(f"  ❌ Target does not exist: {target}\n     Use 'install' first.", err=True)
+            raise SystemExit(1)
+
+        updated_skills = 0
+        updated_kbs = 0
+
+        # Replace skills
+        skills_dir = target / SKILLS_SUBDIR
+        if skills_dir.exists():
+            shutil.rmtree(skills_dir)
+        for skill_dir in skills:
+            dest = target / SKILLS_SUBDIR / skill_dir.parent.name / skill_dir.name
+            dest.mkdir(parents=True, exist_ok=True)
+            for f in skill_dir.iterdir():
+                if f.is_file():
+                    shutil.copy2(f, dest / f.name)
+            updated_skills += 1
+
+        # Replace knowledge bases
+        kbs_dir = target / KB_SUBDIR
+        if kbs_dir.exists():
+            shutil.rmtree(kbs_dir)
+        for kb_dir in kbs:
+            dest = target / KB_SUBDIR / kb_dir.name
+            dest.mkdir(parents=True, exist_ok=True)
+            shutil.copytree(kb_dir, dest, dirs_exist_ok=True)
+            updated_kbs += 1
+
+        # Merge agent.json — preserve user customizations
+        agent_file = target.parent / f"{name}-agent.json"
+        if agent_file.exists():
+            existing = json.loads(agent_file.read_text())
+        else:
+            existing = {"name": name}
+
+        # Build new resources list
+        new_config = self._agent_json(name, target, skills, kbs)
+        new_resources = new_config["resources"]
+
+        # Preserve user-added resources not managed by us
+        managed_sources = {r["source"] for r in new_resources if isinstance(r, dict)}
+        managed_strings = set(r for r in new_resources if isinstance(r, str))
+        user_resources = []
+        for r in existing.get("resources", []):
+            if isinstance(r, dict) and r.get("source") not in managed_sources:
+                user_resources.append(r)
+            elif isinstance(r, str) and r not in managed_strings:
+                user_resources.append(r)
+        existing["resources"] = new_resources + user_resources
+
+        agent_file.write_text(json.dumps(existing, indent=2) + "\n")
+
+        print_summary(updated_skills, updated_kbs, dry_run=False)
+        print_next_steps([
+            "Skills and knowledge bases updated to latest version",
+            f"Agent config merged: {agent_file}",
+            "Your prompt.md, tools, and description were preserved",
+        ])

@@ -52,6 +52,7 @@ nav:
       - Logging: knowledge-bases/logging.md
       - Testing: knowledge-bases/testing.md
       - API: knowledge-bases/api.md
+      - UI: knowledge-bases/ui.md
   - MCP Server: mcp-server.md
   - CLI:
       - Overview: cli/index.md
@@ -77,6 +78,8 @@ nav:
           - Create Test: skills/development/create-test.md
           - Performance Review: skills/development/performance-review.md
           - Review Skill: skills/development/review-skill.md
+          - Create UI Mockup: skills/development/create-ui-mockup.md
+          - Sync UI Spec: skills/development/sync-ui-spec.md
       - Infrastructure:
           - Create Dockerfile: skills/infrastructure/create-dockerfile.md
           - Create Helm Chart: skills/infrastructure/create-helm-chart.md

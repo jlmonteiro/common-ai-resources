@@ -104,3 +104,25 @@ class ClaudeAdapter(BaseAdapter):
             steps.append(f"Skills: {target / '.claude-skills'}/")
         print_summary(len(skills), len(kbs), dry_run=False)
         print_next_steps(steps)
+
+    def update(self, name: str, target: Path, skills: list[Path], kbs: list[Path]) -> None:
+        if not target.exists():
+            click.echo(f"  ❌ Target does not exist: {target}\n     Use 'install' first.", err=True)
+            raise SystemExit(1)
+
+        # Replace skills
+        skills_dir = target / ".claude-skills"
+        if skills_dir.exists():
+            shutil.rmtree(skills_dir)
+        for skill_dir in skills:
+            dest = skills_dir / skill_dir.name
+            dest.mkdir(parents=True, exist_ok=True)
+            for f in skill_dir.iterdir():
+                if f.is_file():
+                    shutil.copy2(f, dest / f.name)
+
+        print_summary(len(skills), len(kbs), dry_run=False)
+        print_next_steps([
+            "Skills updated to latest version",
+            "KBs are served via MCP — no local update needed",
+        ])

@@ -10,3 +10,7 @@ class BaseAdapter(ABC):
     @abstractmethod
     def install(self, name: str, target: Path, skills: list[Path], kbs: list[Path], force: bool = False) -> None:
         """Install resources to target directory."""
+
+    @abstractmethod
+    def update(self, name: str, target: Path, skills: list[Path], kbs: list[Path]) -> None:
+        """Update skills and KBs without overwriting user customizations."""

@@ -34,6 +34,8 @@ All skills in this repository are tool-agnostic — they work with any AI assist
 | [Create Test](development/create-test.md) | Generate tests with BDD structure and scenario proposals |
 | [Performance Review](development/performance-review.md) | Find bottlenecks, N+1 queries, caching gaps |
 | [Review Skill](development/review-skill.md) | Validate and simulate a skill step by step |
+| [Create UI Mockup](development/create-ui-mockup.md) | Generate `.ui.md` wireframes with Markdown-UI DSL |
+| [Sync UI Spec](development/sync-ui-spec.md) | Two-way sync between wireframes and code |
 
 ## Infrastructure
 

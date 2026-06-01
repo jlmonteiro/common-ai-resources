@@ -43,3 +43,6 @@ class Installer:
 
     def execute(self):
         self.adapter.install(self.name, self.target, self.selected_skills, self.selected_kbs, self.force)
+
+    def update(self):
+        self.adapter.update(self.name, self.target, self.selected_skills, self.selected_kbs)
