@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - UI knowledge base with Markdown-UI DSL schema reference and conventions
 - `create-ui-mockup` skill for generating `.ui.md` wireframes
 - `sync-ui-spec` skill for two-way binding between wireframes and code
+- CLI `update` command to refresh skills and KBs without overwriting user customizations
 
 ## [1.0.1] - 2026-06-01
 

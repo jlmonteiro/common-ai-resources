@@ -25,5 +25,17 @@ def install(tool, name, target, skills, kbs, dry_run, force):
         installer.execute()
 
 
+@main.command()
+@click.option("--tool", type=click.Choice(["kiro", "claude", "gemini"]), required=True, help="Target AI tool.")
+@click.option("--name", required=True, help="Agent name.")
+@click.option("--target", type=click.Path(), required=True, help="Installation directory.")
+@click.option("--skills", multiple=True, help="Skills to update (category/name or 'all').")
+@click.option("--knowledge-bases", "kbs", multiple=True, help="Knowledge bases to update (scope or 'all').")
+def update(tool, name, target, skills, kbs):
+    """Update skills and KBs without overwriting user customizations (prompt, tools, description)."""
+    installer = Installer(tool=tool, name=name, target=target, skills=list(skills), kbs=list(kbs))
+    installer.update()
+
+
 if __name__ == "__main__":
     main()
