@@ -1,15 +1,15 @@
 [project]
 name = "common-ai-resources"
-version = "1.1.0"
+version = "1.1.1"
 description = "Shared AI resources with multi-tool adapters for Kiro, Claude Code, and Gemini CLI"
 requires-python = ">=3.11"
 dependencies = [
     "click==8.1.8",
     "pyyaml==6.0.2",
-    "mcp==1.9.3",
-    "fastembed==0.6.1",
-    "numpy==2.3.0",
-    "langchain-text-splitters==0.3.8",
+    "mcp==1.26.0",
+    "fastembed==0.8.0",
+    "numpy==2.3.4",
+    "langchain-text-splitters==1.1.2",
 ]
 
 [project.optional-dependencies]

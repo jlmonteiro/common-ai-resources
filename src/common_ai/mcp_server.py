@@ -8,7 +8,6 @@ from fastembed import TextEmbedding
 from langchain_text_splitters import MarkdownHeaderTextSplitter, RecursiveCharacterTextSplitter
 from mcp.server.fastmcp import FastMCP
 
-from common_ai import __version__
 
 KB_PATH = Path(os.environ.get("KB_PATH", "/data"))
 MODEL_NAME = os.environ.get("EMBEDDING_MODEL", "BAAI/bge-small-en-v1.5")
@@ -16,7 +15,7 @@ MODEL_NAME = os.environ.get("EMBEDDING_MODEL", "BAAI/bge-small-en-v1.5")
 CHUNK_SIZE = 500
 CHUNK_OVERLAP = 100
 
-mcp = FastMCP("common-knowledge-base-mcp", version=__version__)
+mcp = FastMCP("common-knowledge-base-mcp")
 
 _model = None
 _chunks = []
